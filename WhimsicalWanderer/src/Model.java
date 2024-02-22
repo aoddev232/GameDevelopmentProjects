@@ -33,7 +33,7 @@ public class Model {
   private boolean jumpPotionActivated = false;
   private boolean fireResistancePotionActivated = false;
 
-  private int currentLevel = 1;
+  private int currentLevel = 1; //should be 1
   public float goldenStarStartPosition;
   public boolean goldenStarCollected = false;
   public boolean levelCompleted = false; //should be false to start
@@ -50,7 +50,7 @@ public class Model {
 
   public void startGame(){
     CreateLevel(currentLevel);
-    Player = new GameObject("res/Idle.png", 128, 128, new Point3f(650, 500, 0)); //Player 650
+    Player = new GameObject("res/Idle.png", 128, 128, new Point3f(650, 500, 0)); //Player 650, 500
     PlayerList.add(Player);
     playerIsDead = false;
     jumpPotionActivated = false;
@@ -67,7 +67,11 @@ public class Model {
   // This is the heart of the game , where the model takes in all the inputs ,decides the outcomes and then changes the model accordingly.
   public void gamelogic() {
     playerLogic();
-    fireballLogic();
+    
+    if(currentLevel < 4){
+      fireballLogic();
+    }
+
     jumpPotionLogic();
     goldenStarLogic();
     gameLogic();
@@ -214,6 +218,7 @@ private void CreateLevel(int level) {
   int LV1_platformCoordinates[] = {200,180,600,400,250,650,-100,550,-50,750,260,750,570,750,880,750};
   int LV2_platformCoordinates[] = {-10,750,700,750,-150,600,-180,450,-230,300,700,300};
   int LV3_platformCoordinates[] = {640,750,-240,680,-200,200,160,750,-280,550,160,500,640,550,800,440};
+  int LV4_platformCoordinates[] = {-50,750,260,750,570,750,880,750};
 
   //Platform details
   int originalHeight = 210;
@@ -233,6 +238,9 @@ private void CreateLevel(int level) {
       break;
     case 3:
       level_to_draw = populateLevelArray(LV3_platformCoordinates);
+      break;
+    case 4:
+      level_to_draw = populateLevelArray(LV4_platformCoordinates);
       break;
   }
 

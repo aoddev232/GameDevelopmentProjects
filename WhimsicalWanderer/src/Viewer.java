@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import javax.xml.soap.Text;
 
 public class Viewer extends JPanel {
 
@@ -190,12 +189,19 @@ public class Viewer extends JPanel {
     else if(level == 2){
       TextureToLoad = new File("res/forestbackground2.png"); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
     }
-    else{
+    else if(level == 3){
       TextureToLoad = new File("res/forestbackground3.png");
+    }
+    else{
+      TextureToLoad = new File("res/forestbackground4.png");
     }
     try {
       myImage = ImageIO.read(TextureToLoad);
       g.drawImage(myImage, 0, 0, 1000, 1000, 0, 0, 1000, 1000, null);
+      if(level == 4){
+        displayStatus("Game Completed!", "", 430, 350, g, Color.YELLOW);
+        displayStatus("       Deaths: " + gameworld.deaths, "", 430, 375, g, Color.RED);
+      }
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -306,7 +312,8 @@ public class Viewer extends JPanel {
         e.printStackTrace();
     }
 }
-  // Fireball, forestbackground and startscreen from https://chat.openai.com/
+  // Fireball, forestbackgrounds and startscreen and platforms from https://chat.openai.com/
   // Idle from https://craftpix.net/
   // Golden Star from https://www.freepik.com/premium-vector/golden-star-rotate-animation-animated-game-sprite_44235675.htm
+  // Potions from ?
 }
