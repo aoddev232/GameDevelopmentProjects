@@ -23,6 +23,7 @@ public class MainWindow {
 	 private static int TargetFPS = 100;
 	 private static boolean startGame= false; 
 	 private JLabel BackgroundImageForStartMenu ;
+	 AudioPlayer audioplayer = new AudioPlayer();
 	  
 	public MainWindow() {
 	        frame.setSize(1000, 1000);  // you can customise this later and adapt it to change on size.  
@@ -61,6 +62,7 @@ public class MainWindow {
 			}   
 			frame.setTitle("Whimsical Wanderer - Main Menu"); 
 	       	frame.setVisible(true);   
+			audioplayer.playSound("res/GameMusic.wav", true);
 	}
 
 	public static void main(String[] args) {

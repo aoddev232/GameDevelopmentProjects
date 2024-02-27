@@ -12,6 +12,8 @@ public class Model {
   private GameObject LevelDoor;
   private GameObject MovingPlatform;
 
+  public AudioPlayer audioPlayer = new AudioPlayer();
+
   private CopyOnWriteArrayList<GameObject> Playerlist = new CopyOnWriteArrayList<GameObject>();
   private CopyOnWriteArrayList<GameObject> FireballList = new CopyOnWriteArrayList<GameObject>();
   private CopyOnWriteArrayList<GameObject> PlatformList = new CopyOnWriteArrayList<GameObject>();
@@ -366,6 +368,7 @@ private void fireballLogic() {
     fireball.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
     fireball.getCentre().getY() + fireball.getHeight() > Player.getCentre().getY() + 80) {
       if(!fireResistancePotionActivated){
+        audioPlayer.playSound("res/FireballSound.wav", false);
         playerIsDead = true;
       }
     }
@@ -408,6 +411,8 @@ private void jumpPotionLogic(){
     jumpPotion.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
     jumpPotion.getCentre().getY() + jumpPotion.getHeight() > Player.getCentre().getY() + 80) {
         jumpPotionActivated = true;
+        JumpPotionList.remove(jumpPotion); //test
+        audioPlayer.playSound("res/PotionSound2.wav", false);
     }
   }
 }
@@ -420,6 +425,8 @@ private void fireResistancePotionLogic(){
     firePotion.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
     firePotion.getCentre().getY() + firePotion.getHeight() > Player.getCentre().getY() + 80) {
         fireResistancePotionActivated = true;
+        FireResistancePotionList.remove(firePotion);
+        audioPlayer.playSound("res/PotionSound1.wav", false);
     }
   }
 }
@@ -448,9 +455,11 @@ private void goldenStarLogic() {
   if (GoldenStar.getCentre().getX() < Player.getCentre().getX() + Player.getWidth() - 60 &&
   GoldenStar.getCentre().getX() + GoldenStar.getWidth() > Player.getCentre().getX() + 60 &&
   GoldenStar.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
-  GoldenStar.getCentre().getY() + GoldenStar.getHeight() > Player.getCentre().getY() + 80) {
+  GoldenStar.getCentre().getY() + GoldenStar.getHeight() > Player.getCentre().getY() + 80 &&
+  !goldenStarCollected) {
       goldenStarCollected = true;
       moving_platform_velocity = 0;
+      audioPlayer.playSound("res/GoldenStarSound.wav", false);
   }
 
 }
@@ -461,6 +470,7 @@ private void levelDoorLogic(){
   LevelDoor.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
   LevelDoor.getCentre().getY() + LevelDoor.getHeight() > Player.getCentre().getY() + 80) {
       levelCompleted = true;
+      audioPlayer.playSound("res/DoorSound.wav", false);
   }
 }
 
