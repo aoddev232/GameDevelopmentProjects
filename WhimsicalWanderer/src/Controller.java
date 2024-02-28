@@ -4,10 +4,13 @@ import java.awt.event.KeyListener;
 public class Controller implements KeyListener {
         
 	   private static boolean KeyAPressed= false;
-	   private static boolean KeySPressed= false;
 	   private static boolean KeyDPressed= false;
-	   private static boolean KeyWPressed= false;
 	   private static boolean KeySpacePressed= false;
+
+	   //2 player mode
+	   private static boolean KeyJPressed= false;
+	   private static boolean KeyLPressed= false;
+	   private static boolean KeyIPressed= false;
 	   
 	   private static final Controller instance = new Controller();
 	   
@@ -30,10 +33,11 @@ public class Controller implements KeyListener {
 		switch (e.getKeyChar()) 
 		{
 			case 'a':setKeyAPressed(true);break;  
-			case 's':setKeySPressed(true);break;
-			case 'w':setKeyWPressed(true);break;
 			case 'd':setKeyDPressed(true);break;
-			case ' ':setKeySpacePressed(true);break;   
+			case 'w':setKeyWPressed(true);break;   
+			case 'j':setKeyJPressed(true);break;
+			case 'l':setKeyLPressed(true);break;
+			case 'i':setKeyIPressed(true);break;
 		    default:
 		    	//System.out.println("Controller test:  Unknown key pressed");
 		        break;
@@ -49,10 +53,11 @@ public class Controller implements KeyListener {
 		switch (e.getKeyChar()) 
 		{
 			case 'a':setKeyAPressed(false);break;  
-			case 's':setKeySPressed(false);break;
-			case 'w':setKeyWPressed(false);break;
 			case 'd':setKeyDPressed(false);break;
-			case ' ':setKeySpacePressed(false);break;   
+			case 'w':setKeyWPressed(false);break;   
+			case 'j':setKeyJPressed(false);break;
+			case 'l':setKeyLPressed(false);break;
+			case 'i':setKeyIPressed(false);break;
 		    default:
 		    	//System.out.println("Controller test:  Unknown key pressed");
 		        break;
@@ -71,17 +76,6 @@ public class Controller implements KeyListener {
 		KeyAPressed = keyAPressed;
 	}
 
-
-	public boolean isKeySPressed() {
-		return KeySPressed;
-	}
-
-
-	public void setKeySPressed(boolean keySPressed) {
-		KeySPressed = keySPressed;
-	}
-
-
 	public boolean isKeyDPressed() {
 		return KeyDPressed;
 	}
@@ -93,23 +87,38 @@ public class Controller implements KeyListener {
 
 
 	public boolean isKeyWPressed() {
-		return KeyWPressed;
-	}
-
-
-	public void setKeyWPressed(boolean keyWPressed) {
-		KeyWPressed = keyWPressed;
-	}
-
-
-	public boolean isKeySpacePressed() {
 		return KeySpacePressed;
 	}
 
 
-	public void setKeySpacePressed(boolean keySpacePressed) {
-		KeySpacePressed = keySpacePressed;
+	public void setKeyWPressed(boolean keyWPressed) {
+		KeySpacePressed = keyWPressed;
 	} 
 	
+
+	//2 Player Mode
+	public boolean isKeyJPressed() {
+		return KeyJPressed;
+	}
+
+	public void setKeyJPressed(boolean keyJPressed) {
+		KeyJPressed = keyJPressed;
+	}
+
+	public boolean isKeyLPressed() {
+		return KeyLPressed;
+	}
+
+	public void setKeyLPressed(boolean keyLPressed) {
+		KeyLPressed = keyLPressed;
+	}
+
+	public boolean isKeyIPressed() {
+		return KeyIPressed;
+	}
+
+	public void setKeyIPressed(boolean keyIPressed) {
+		KeyIPressed = keyIPressed;
+	} 
 	 
 }

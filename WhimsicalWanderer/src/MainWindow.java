@@ -34,21 +34,49 @@ public class MainWindow {
 			canvas.setBackground(new Color(255,255,255)); //white background  replaced by Space background but if you remove the background method this will draw a white screen 
 		    canvas.setVisible(false);   // this will become visible after you press the key. 
 
-	        JButton startMenuButton = new JButton("Play Game");  // start button
-	        startMenuButton.addActionListener(new ActionListener()
+			//Buttons:
+	        JButton startMenuButton1P = new JButton("Play Game - Single Player");  // start button
+	        startMenuButton1P.addActionListener(new ActionListener()
 			{ 
 			@Override
 			public void actionPerformed(ActionEvent e) { 
-				startMenuButton.setVisible(false);
+				startMenuButton1P.setVisible(false);
 				BackgroundImageForStartMenu.setVisible(false); 
 				canvas.setVisible(true); 
 				canvas.addKeyListener(Controller);    //adding the controller to the Canvas  
 				canvas.requestFocusInWindow();   // making sure that the Canvas is in focus so keyboard input will be taking in .
 				startGame=true;
+
 			}});  
-	        startMenuButton.setBounds(400, 350, 200, 40); 
-			frame.add(startMenuButton);  
+	        startMenuButton1P.setBounds(400, 250, 200, 40);
+			startMenuButton1P.setBackground(Color.BLACK);
+			startMenuButton1P.setForeground(Color.WHITE); 
+			frame.add(startMenuButton1P);
+			
+
+			JButton startMenuButton2P = new JButton("Play Game - Two Player");  // start button
+	        startMenuButton2P.addActionListener(new ActionListener()
+			{ 
+			@Override
+			public void actionPerformed(ActionEvent e) { 
+				startMenuButton2P.setVisible(false);
+				BackgroundImageForStartMenu.setVisible(false); 
+				canvas.setVisible(true); 
+				canvas.addKeyListener(Controller);    //adding the controller to the Canvas  
+				canvas.requestFocusInWindow();   // making sure that the Canvas is in focus so keyboard input will be taking in .
+				startGame=true;
+				gameworld.two_player = true;
+				gameworld.addSecondPLayer();
+			}});  
+	        startMenuButton2P.setBounds(400, 350, 200, 40); 
+			startMenuButton2P.setBackground(Color.BLACK);
+			startMenuButton2P.setForeground(Color.WHITE);
+			frame.add(startMenuButton2P);  
 	        
+
+
+
+
 	        //loading background image 
 	        File BackroundToLoad = new File("res/startscreen.png");  //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE 
 			try {
@@ -77,7 +105,6 @@ public class MainWindow {
 			//wait till next time step 
 		 	while (FrameCheck > System.currentTimeMillis()){} 
 			
-			
 			if(startGame)
 			{
 				gameloop();
@@ -96,6 +123,7 @@ public class MainWindow {
 		
 		// controller input  will happen on its own thread 
 		// So no need to call it explicitly 
+
 		
 		// model update   
 		gameworld.gamelogic();
@@ -105,7 +133,12 @@ public class MainWindow {
 		
 		// Both these calls could be setup as  a thread but we want to simplify the game logic for you.  
 		//score update  
-		frame.setTitle("Whimsical Wanderer - Level " + gameworld.getCurrentLevel() + "             Deaths: " + gameworld.deaths); 
+		if(gameworld.getCurrentLevel() == 4){
+			frame.setTitle("Whimsical Wanderer - Game Completed!"); 
+		}
+		else{
+			frame.setTitle("Whimsical Wanderer - Level " + gameworld.getCurrentLevel() + "/3             Deaths: " + gameworld.deaths); 
+		}
 	}
 
 }

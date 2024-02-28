@@ -44,29 +44,40 @@ public class Viewer extends JPanel {
     super.paintComponent(g);
     CurrentAnimationTime++; // runs animation time step
 
+    //Draw background (optimise?)
+    drawBackground(g, gameworld.getCurrentLevel());
+
+    //Draw Platforms
+	  gameworld
+    .getPlatforms()
+    .forEach(temp -> {
+    drawPlatforms(
+      (int) temp.getCentre().getX(),
+      (int) temp.getCentre().getY(),
+      (int) temp.getWidth(),
+      (int) temp.getHeight(),
+      temp.getTexture(),
+      g
+    );
+  });
+
     //Draw player Game Object
     int x = (int) gameworld.getPlayer().getCentre().getX();
     int y = (int) gameworld.getPlayer().getCentre().getY();
     int width = (int) gameworld.getPlayer().getWidth();
     int height = (int) gameworld.getPlayer().getHeight();
     String texture = gameworld.getPlayer().getTexture();
+    drawPlayer(x, y, width, height, texture, g, gameworld.isFacingLeft(), gameworld.isDead());
 
-    //Draw background (optimise?)
-    drawBackground(g, gameworld.getCurrentLevel());
-
-    //Draw Platforms
-	  gameworld
-      .getPlatforms()
-      .forEach(temp -> {
-      drawPlatforms(
-        (int) temp.getCentre().getX(),
-        (int) temp.getCentre().getY(),
-        (int) temp.getWidth(),
-        (int) temp.getHeight(),
-        temp.getTexture(),
-        g
-      );
-    });
+    // Check if Player 2 actiavted
+    if(gameworld.two_player){
+      x = (int) gameworld.getPlayer2().getCentre().getX();
+      y = (int) gameworld.getPlayer2().getCentre().getY();
+      width = (int) gameworld.getPlayer2().getWidth();
+      height = (int) gameworld.getPlayer2().getHeight();
+      texture = gameworld.getPlayer2().getTexture();
+      drawPlayer(x, y, width, height, texture, g, gameworld.P2isFacingLeft(), gameworld.P2isDead());
+    }
 
     if(!gameworld.goldenStarCollected && gameworld.getGoldenStarList().size() != 0){
       drawGoldenStar(
@@ -105,7 +116,7 @@ public class Viewer extends JPanel {
       );
       }
       else if (gameworld.isFirePotionActivated()){
-        displayStatus("Fire Resistance Potion", " Activated!", 750, 50, g, Color.RED);
+        displayStatus("Fire Resistance Potion", " Activated!", 650, 50, g, Color.RED);
       }
 
     //Draw Golden Starv / Statuss
@@ -129,9 +140,6 @@ public class Viewer extends JPanel {
         g);
         displayStatus("Level Completed!", "  Next Level starting...", 350, 350, g, Color.YELLOW);
     }
-
-    //Draw player
-    drawPlayer(x, y, width, height, texture, g, gameworld.isFacingLeft(), gameworld.isDead());
 
     //Draw Enemies
     gameworld
