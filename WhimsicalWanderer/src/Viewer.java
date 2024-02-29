@@ -101,7 +101,7 @@ public class Viewer extends JPanel {
     );
     }
     else if (gameworld.isJumpPotionActivated()){
-      displayStatus("Jump Potion", " Activated!", 750, 50, g, Color.PINK);
+      displayStatus("Jump Potion", " Activated!", 650, 50, g, Color.PINK);
     }
 
     //Draw Fire Potion
@@ -116,7 +116,7 @@ public class Viewer extends JPanel {
       );
       }
       else if (gameworld.isFirePotionActivated()){
-        displayStatus("Fire Resistance Potion", " Activated!", 650, 50, g, Color.RED);
+        displayStatus("Fire Resistance Potion", " Activated!", 650, 25, g, Color.RED);
       }
 
     //Draw Golden Starv / Statuss
@@ -128,7 +128,7 @@ public class Viewer extends JPanel {
         (int) gameworld.getLevelDoor().getHeight(),
         gameworld.getLevelDoor().getTexture(),
         g);
-        displayStatus("Star Key", " Acquired!", 750, 75, g, Color.YELLOW);
+        displayStatus("Star Key", " Acquired!", 650, 75, g, Color.YELLOW);
     }
     if(gameworld.levelCompleted){
       drawLevelDoor(
@@ -320,8 +320,11 @@ public class Viewer extends JPanel {
         e.printStackTrace();
     }
 }
-  // Fireball, forestbackgrounds and startscreen and platforms from https://chat.openai.com/
+  // Fireball, forestbackgrounds and platforms from https://chat.openai.com/
   // Idle from https://craftpix.net/
-  // Golden Star from https://www.freepik.com/premium-vector/golden-star-rotate-animation-animated-game-sprite_44235675.htm
-  // Potions from ?
+  // Golden Star & Door from https://www.freepik.com/premium-vector/golden-star-rotate-animation-animated-game-sprite_44235675.htm
+  // Potions from https://opengameart.org/
+  // Sound Effects from https://pixabay.com/sound-effects/
+  
+  // Music Produced by me
 }

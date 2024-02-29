@@ -35,7 +35,7 @@ public class Model {
   private boolean jumpPotionActivated = false;
   private boolean fireResistancePotionActivated = false;
 
-  private int currentLevel = 1; //should be 1 initially
+  private int currentLevel = 3; //should be 1 initially
   public float goldenStarStartPosition;
   public boolean goldenStarCollected = false;
   public boolean levelCompleted = false; //should be false to start
@@ -74,12 +74,14 @@ public class Model {
   }
 
   public void addSecondPLayer(){
+    CreateLevel(currentLevel);
     Player2 = new GameObject("res/Idle2.png", 128, 128, new Point3f(750, 500, 0)); //Player 650, 500
     PlayerList.add(Player2);
     P2playerIsDead = false;
     jumpPotionActivated = false;
     fireResistancePotionActivated = false;
     goldenStarCollected = false;
+    moving_platform_velocity = 1;
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -413,7 +415,8 @@ private void CreateLevel(int level) {
     left_bounds = 150;
     right_bounds = 420;
 
-
+    JumpPotion = new GameObject("res/jumppotion.png", 50, 50, new Point3f(-180, 520, 0));
+    JumpPotionList.add(JumpPotion);
     FireResistancePotion = new GameObject("res/fireresistancepotion.png", 50, 50, new Point3f(940, 410, 0));
     FireResistancePotionList.add(FireResistancePotion);
 
