@@ -16,25 +16,25 @@ import util.UnitTests;
 
 
 public class MainWindow {
-	 private static JFrame frame = new JFrame("Game");   // Change to the name of your game 
+	 private static JFrame frame = new JFrame("Whimsical Wanderer"); 
 	 private static Model gameworld= new Model();
 	 private static Viewer canvas = new  Viewer( gameworld);
 	 private KeyListener Controller =new Controller()  ; 
 	 private static int TargetFPS = 100;
 	 private static boolean startGame= false; 
 	 private JLabel BackgroundImageForStartMenu ;
-	 AudioPlayer audioplayer = new AudioPlayer();
+	 public AudioPlayer audioplayer = new AudioPlayer();
 	  
 	public MainWindow() {
-	        frame.setSize(1000, 1000);  // you can customise this later and adapt it to change on size.  
-	      	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   //If exit // you can modify with your way of quitting , just is a template.
+	        frame.setSize(1000, 1000);
+	      	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        frame.setLayout(null);
 	        frame.add(canvas);  
 	        canvas.setBounds(0, 0, 1000, 1000); 
-			canvas.setBackground(new Color(255,255,255)); //white background  replaced by Space background but if you remove the background method this will draw a white screen 
-		    canvas.setVisible(false);   // this will become visible after you press the key. 
+			canvas.setBackground(new Color(255,255,255));
+		    canvas.setVisible(false); 
 
-			//Buttons:
+			// Buttons:
 	        JButton startMenuButton1P = new JButton("Play Game - Single Player");  // start button
 	        startMenuButton1P.addActionListener(new ActionListener()
 			{ 
@@ -43,18 +43,18 @@ public class MainWindow {
 				startMenuButton1P.setVisible(false);
 				BackgroundImageForStartMenu.setVisible(false); 
 				canvas.setVisible(true); 
-				canvas.addKeyListener(Controller);    //adding the controller to the Canvas  
-				canvas.requestFocusInWindow();   // making sure that the Canvas is in focus so keyboard input will be taking in .
+				canvas.addKeyListener(Controller);
+				canvas.requestFocusInWindow();
 				startGame=true;
 
 			}});  
-	        startMenuButton1P.setBounds(400, 250, 200, 40);
-			startMenuButton1P.setBackground(Color.BLACK);
-			startMenuButton1P.setForeground(Color.WHITE); 
+	        startMenuButton1P.setBounds(400, 550, 200, 40);
+			startMenuButton1P.setBackground(Color.PINK);
+			startMenuButton1P.setForeground(Color.BLACK); 
 			frame.add(startMenuButton1P);
 			
 
-			JButton startMenuButton2P = new JButton("Play Game - Two Player");  // start button
+			JButton startMenuButton2P = new JButton("Play Game - Two Player");
 	        startMenuButton2P.addActionListener(new ActionListener()
 			{ 
 			@Override
@@ -62,23 +62,20 @@ public class MainWindow {
 				startMenuButton2P.setVisible(false);
 				BackgroundImageForStartMenu.setVisible(false); 
 				canvas.setVisible(true); 
-				canvas.addKeyListener(Controller);    //adding the controller to the Canvas  
-				canvas.requestFocusInWindow();   // making sure that the Canvas is in focus so keyboard input will be taking in .
+				canvas.addKeyListener(Controller);
+				canvas.requestFocusInWindow();
 				startGame=true;
 				gameworld.two_player = true;
 				gameworld.addSecondPLayer();
 			}});  
-	        startMenuButton2P.setBounds(400, 350, 200, 40); 
-			startMenuButton2P.setBackground(Color.BLACK);
-			startMenuButton2P.setForeground(Color.WHITE);
+	        startMenuButton2P.setBounds(400, 600, 200, 40); 
+			startMenuButton2P.setBackground(Color.PINK);
+			startMenuButton2P.setForeground(Color.BLACK);
 			frame.add(startMenuButton2P);  
 	        
 
-
-
-
-	        //loading background image 
-	        File BackroundToLoad = new File("res/startscreen.png");  //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE 
+	        // Loading background image 
+	        File BackroundToLoad = new File("res/forestbackground0.png");
 			try {
 				 
 				BufferedImage myPicture = ImageIO.read(BackroundToLoad);
@@ -95,10 +92,8 @@ public class MainWindow {
 
 	public static void main(String[] args) {
 		MainWindow mainwindow = new MainWindow();  //sets up environment 
-		while(true)   //not nice but remember we do just want to keep looping till the end.  // this could be replaced by a thread but again we want to keep things simple 
-		{ 
-			//swing has timer class to help us time this but I'm writing my own, you can of course use the timer, but I want to set FPS and display it 
-			
+		while(true)
+		{
 			int TimeBetweenFrames =  1000 / TargetFPS;
 			long FrameCheck = System.currentTimeMillis() + (long) TimeBetweenFrames; 
 			
@@ -112,27 +107,18 @@ public class MainWindow {
 	
 			//UNIT test to see if framerate matches 
 			UnitTests.CheckFrameRate(System.currentTimeMillis(),FrameCheck, TargetFPS); 
-			  
 		}
-		
-		
 	} 
+
 	//Basic Model-View-Controller pattern 
 	private static void gameloop() { 
 		// GAMELOOP  
-		
-		// controller input  will happen on its own thread 
-		// So no need to call it explicitly 
 
-		
 		// model update   
 		gameworld.gamelogic();
 		// view update 
-		
 		canvas.updateview(); 
 		
-		// Both these calls could be setup as  a thread but we want to simplify the game logic for you.  
-		//score update  
 		if(gameworld.getCurrentLevel() == 4){
 			frame.setTitle("Whimsical Wanderer - Game Completed!"); 
 		}

@@ -16,27 +16,22 @@ public class Viewer extends JPanel {
 
   public Viewer(Model World) {
     this.gameworld = World;
-    // TODO Auto-generated constructor stub
   }
 
   public Viewer(LayoutManager layout) {
     super(layout);
-    // TODO Auto-generated constructor stub
   }
 
   public Viewer(boolean isDoubleBuffered) {
     super(isDoubleBuffered);
-    // TODO Auto-generated constructor stub
   }
 
   public Viewer(LayoutManager layout, boolean isDoubleBuffered) {
     super(layout, isDoubleBuffered);
-    // TODO Auto-generated constructor stub
   }
 
   public void updateview() {
     this.repaint();
-    // TODO Auto-generated method stub
 
   }
 
@@ -44,7 +39,7 @@ public class Viewer extends JPanel {
     super.paintComponent(g);
     CurrentAnimationTime++; // runs animation time step
 
-    //Draw background (optimise?)
+    //Draw background
     drawBackground(g, gameworld.getCurrentLevel());
 
     //Draw Platforms
@@ -104,7 +99,7 @@ public class Viewer extends JPanel {
       displayStatus("Jump Potion", " Activated!", 650, 50, g, Color.PINK);
     }
 
-    //Draw Fire Potion
+    //Draw Fire Potion / Status
     if (!gameworld.isFirePotionActivated() && gameworld.getFireResistancePotionList().size() != 0){
       drawJumpPotion(
         (int) gameworld.getFireResistancePotionList().get(0).getCentre().getX(),
@@ -119,7 +114,7 @@ public class Viewer extends JPanel {
         displayStatus("Fire Resistance Potion", " Activated!", 650, 25, g, Color.RED);
       }
 
-    //Draw Golden Starv / Statuss
+    // Draw Golden Starv / Status
     if(gameworld.goldenStarCollected){
       drawLevelDoor(
         (int) gameworld.getLevelDoor().getCentre().getX(),
@@ -130,6 +125,8 @@ public class Viewer extends JPanel {
         g);
         displayStatus("Star Key", " Acquired!", 650, 75, g, Color.YELLOW);
     }
+
+    // Draw Level Door
     if(gameworld.levelCompleted){
       drawLevelDoor(
         (int) gameworld.getLevelDoor().getCentre().getX(),
@@ -164,12 +161,10 @@ public class Viewer extends JPanel {
     String texture,
     Graphics g
   ) {
-    File TextureToLoad = new File(texture); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+    File TextureToLoad = new File(texture);
     try {
       Image myImage = ImageIO.read(TextureToLoad);
-      //The spirte is 32x32 pixel wide and 4 of them are placed together so we need to grab a different one each time
-      //remember your training :-) computer science everything starts at 0 so 32 pixels gets us to 31
-      int currentPositionInAnimation = ((int) (CurrentAnimationTime % 4) * 12); //slows down animation so every 10 frames we get another frame so every 100ms
+      int currentPositionInAnimation = ((int) (CurrentAnimationTime % 4) * 12); //slows down animation
       g.drawImage(
         myImage,
         x,
@@ -183,7 +178,6 @@ public class Viewer extends JPanel {
         null
       );
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
@@ -192,10 +186,10 @@ public class Viewer extends JPanel {
     File TextureToLoad ;
     Image myImage;
     if(level == 1){
-      TextureToLoad = new File("res/forestbackground.png"); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+      TextureToLoad = new File("res/forestbackground1.png"); 
     }
     else if(level == 2){
-      TextureToLoad = new File("res/forestbackground2.png"); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+      TextureToLoad = new File("res/forestbackground2.png");
     }
     else if(level == 3){
       TextureToLoad = new File("res/forestbackground3.png");
@@ -224,60 +218,53 @@ public class Viewer extends JPanel {
     String texture,
     Graphics g
   ) {
-    File TextureToLoad = new File(texture); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+    File TextureToLoad = new File(texture);
     try {
       Image myImage = ImageIO.read(TextureToLoad);
-      //64 by 128
       g.drawImage(myImage, x, y, x + width, y + height, 0, 0, 946, 210, null);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
   private void drawJumpPotion(int x, int y, int width, int height, String texture, Graphics g) {
-    File TextureToLoad = new File(texture); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+    File TextureToLoad = new File(texture); 
     try {
       Image myImage = ImageIO.read(TextureToLoad);
-      //64 by 128
       g.drawImage(myImage, x, y, x + width, y + height, 0, 0, 200, 200, null);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
-  private void displayStatus(String status, String statusType, int x, int y, Graphics g, Color color){
-    g.setColor(color); // Set the text color to red
+  public void displayStatus(String status, String statusType, int x, int y, Graphics g, Color color){
+    // Set status color
+    g.setColor(color);
 
     // Change the font size and style
-    Font font = new Font("Serif", Font.BOLD, 20); // Create a new font instance (Font Name, Style, Size)
-    g.setFont(font); // Set the font
+    Font font = new Font("Serif", Font.BOLD, 20);
+    g.setFont(font); 
 
     // Draw the text at the top-left corner
-    g.drawString(status + statusType, x, y); // Adjusted y position for visibility
+    g.drawString(status + statusType, x, y);
   }
 
   private void drawGoldenStar(int x, int y, int width, int height, String texture, Graphics g) {
-    File TextureToLoad = new File(texture); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+    File TextureToLoad = new File(texture);
     try {
       Image myImage = ImageIO.read(TextureToLoad);
-      //64 by 128
       g.drawImage(myImage, x, y, x + width, y + height, 0, 0, 150, 200, null);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
   private void drawLevelDoor(int x, int y, int width, int height, String texture, Graphics g) {
-    File TextureToLoad = new File(texture); //should work okay on OSX and Linux but check if you have issues depending your eclipse install or if your running this without an IDE
+    File TextureToLoad = new File(texture);
     try {
       Image myImage = ImageIO.read(TextureToLoad);
-      //64 by 128
       g.drawImage(myImage, x, y, x + width, y + height, 0, 0, 225, 225, null);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
@@ -292,29 +279,29 @@ public class Viewer extends JPanel {
           if (isFacingLeft) {
               // Flip image horizontally when moving left
               g.drawImage(myImage,
-                          x + width, // Start drawing from right to left
-                          y,
-                          x, // End drawing to the original start
-                          y + height,
-                          currentPositionInAnimation,
-                          0,
-                          currentPositionInAnimation + 127,
-                          128,
-                          null);
+                x + width, // Start drawing from right to left
+                y,
+                x, // End drawing to the original start
+                y + height,
+                currentPositionInAnimation,
+                0,
+                currentPositionInAnimation + 127,
+                128,
+                null);
           } 
           else {
               // Normal drawing when moving right
               g.drawImage(myImage,
-                          x,
-                          y,
-                          x + width,
-                          y + height,
-                          currentPositionInAnimation,
-                          0,
-                          currentPositionInAnimation + 127,
-                          128,
-                          null);
-          }
+                x,
+                y,
+                x + width,
+                y + height,
+                currentPositionInAnimation,
+                0,
+                currentPositionInAnimation + 127,
+                128,
+                null);
+        }
       }
     } catch (IOException e) {
         e.printStackTrace();
@@ -325,6 +312,5 @@ public class Viewer extends JPanel {
   // Golden Star & Door from https://www.freepik.com/premium-vector/golden-star-rotate-animation-animated-game-sprite_44235675.htm
   // Potions from https://opengameart.org/
   // Sound Effects from https://pixabay.com/sound-effects/
-  
   // Music Produced by me
 }

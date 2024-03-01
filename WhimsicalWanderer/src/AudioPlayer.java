@@ -18,7 +18,7 @@ public class AudioPlayer {
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
             clip.start();
-            // Optional: to play sound loop continuously.
+            // Loop sound file (if music)
             if(loop){
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
             }

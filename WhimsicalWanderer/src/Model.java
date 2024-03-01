@@ -35,10 +35,10 @@ public class Model {
   private boolean jumpPotionActivated = false;
   private boolean fireResistancePotionActivated = false;
 
-  private int currentLevel = 3; //should be 1 initially
+  private int currentLevel = 1;
   public float goldenStarStartPosition;
   public boolean goldenStarCollected = false;
-  public boolean levelCompleted = false; //should be false to start
+  public boolean levelCompleted = false;
   public int deaths = 0;
   public int maxFireBallCount = 4;
 
@@ -47,7 +47,7 @@ public class Model {
   private float playerTop;
   private float playerBottom;
 
-  //PLAYER 2 VARIABLES
+  //PLAYER 2 EXTRA VARIABLES
   private Vector3f P2velocity = new Vector3f(0, 0, 0);
   private boolean P2isOnPlatform = false;
   private boolean P2isFacingLeft = false;
@@ -70,7 +70,6 @@ public class Model {
     fireResistancePotionActivated = false;
     goldenStarCollected = false;
     moving_platform_velocity = 1;
-    // levelCompleted = false;
   }
 
   public void addSecondPLayer(){
@@ -139,7 +138,6 @@ public class Model {
 
 
   private void playerLogic() {
-
     // Check firstly if player has fallen off the map
     if(Player.getCentre().getY() == 1000.0f){
       audioPlayer.playSound("res/falling.wav", false);
@@ -162,6 +160,7 @@ public class Model {
         velocity.setY(0);
     }
 
+    // Check for movement input
     if (Controller.getInstance().isKeyAPressed() && !playerIsDead) {
         Player.getCentre().ApplyVector(new Vector3f(-2, 0, 0));
         isFacingLeft = true; // Player is moving left
@@ -169,8 +168,6 @@ public class Model {
         Player.getCentre().ApplyVector(new Vector3f(2, 0, 0));
         isFacingLeft = false; // Player is moving right
     }
-
-    // Jumping
     if (Controller.getInstance().isKeyWPressed() && isOnPlatform) {
         Jump();
     }
@@ -203,6 +200,7 @@ private void player2logic(){
         P2velocity.setY(0);
     }
 
+    // Check for movement input
     if (Controller.getInstance().isKeyJPressed() && !P2playerIsDead) {
       Player2.getCentre().ApplyVector(new Vector3f(-2, 0, 0));
       P2isFacingLeft = true; // Player is moving left
@@ -210,8 +208,6 @@ private void player2logic(){
       Player2.getCentre().ApplyVector(new Vector3f(2, 0, 0));
       P2isFacingLeft = false; // Player is moving right
   }
-
-    // Jumping
     if (Controller.getInstance().isKeyIPressed() && P2isOnPlatform) {
       P2Jump();
   }
@@ -223,7 +219,6 @@ private void player2logic(){
 }
 
 private void Jump() {
-    // This is a simple jumping mechanism, adjust the vector for your game's needs
     float jumpVelocity;
     if(jumpPotionActivated){
       jumpVelocity = jumpPotionJumpVelocity;
@@ -233,12 +228,11 @@ private void Jump() {
     }
 
     
-    velocity.setY(jumpVelocity); // Adjust the jump strength
+    velocity.setY(jumpVelocity);
     Player.getCentre().ApplyVector(velocity);
 }
 
 private void P2Jump() {
-  // This is a simple jumping mechanism, adjust the vector for your game's needs
   float jumpVelocity;
   if(jumpPotionActivated){
     jumpVelocity = jumpPotionJumpVelocity;
@@ -254,7 +248,7 @@ private void P2Jump() {
 
 private void updateIsOnPlatform() {
   isOnPlatform = false;
-  // Basic collision detection
+  // Collision detection
   for (GameObject platform : PlatformList) {
       if (playerIsCollidingWithPlatform(Player, platform)) {
           isOnPlatform = true;
@@ -265,11 +259,10 @@ private void updateIsOnPlatform() {
 
 private void P2updateIsOnPlatform() {
   P2isOnPlatform = false;
-  // Basic collision detection
   for (GameObject platform : PlatformList) {
       if (P2playerIsCollidingWithPlatform(Player2, platform)) {
           P2isOnPlatform = true;
-          break; // Exit the loop once a collision is found
+          break;
       }
   }
 }
@@ -291,8 +284,6 @@ private void P2getPlayerDimensionLocations(GameObject player) {
 
 
 private boolean playerIsCollidingWithPlatform(GameObject player, GameObject platform) {
-  //note getPlayerDimensionLocations() is getting called right before this
-
   float platformLeft = platform.getCentre().getX();
   float platformRight = platform.getCentre().getX() + platform.getWidth() - 60;
   float platformTop = platform.getCentre().getY();
@@ -303,28 +294,23 @@ private boolean playerIsCollidingWithPlatform(GameObject player, GameObject plat
   boolean collisionY = playerBottom > platformTop && platformBottom > playerTop;
 
   // Ensuring player's bottom edge is not too far above the platform to be considered on it
-  boolean isCorrectlyAbovePlatform = playerBottom - platformTop < 10; // Example threshold
+  boolean isCorrectlyAbovePlatform = playerBottom - platformTop < 10;
 
   // If X axes are colliding, Y axes are in correct relation, and player is correctly above the platform
   return collisionX && collisionY && isCorrectlyAbovePlatform;
 }
 
 private boolean P2playerIsCollidingWithPlatform(GameObject player, GameObject platform) {
-  //note getPlayerDimensionLocations() is getting called right before this
-
   float platformLeft = platform.getCentre().getX();
   float platformRight = platform.getCentre().getX() + platform.getWidth() - 60;
   float platformTop = platform.getCentre().getY();
   float platformBottom = platform.getCentre().getY() + platform.getHeight() - 10;
 
-  // Check if any of the edges of the rectangles exceed the other's edges.
   boolean collisionX = P2playerRight > platformLeft && platformRight > P2playerLeft;
   boolean collisionY = P2playerBottom > platformTop && platformBottom > P2playerTop;
 
-  // Ensuring player's bottom edge is not too far above the platform to be considered on it
-  boolean isCorrectlyAbovePlatform = P2playerBottom - platformTop < 10; // Example threshold
+  boolean isCorrectlyAbovePlatform = P2playerBottom - platformTop < 10; 
 
-  // If X axes are colliding, Y axes are in correct relation, and player is correctly above the platform
   return collisionX && collisionY && isCorrectlyAbovePlatform;
 }
 
@@ -341,7 +327,7 @@ private void CreateLevel(int level) {
   //Level platform designs
   int LV1_platformCoordinates[] = {200,180,600,400,250,650,-100,550,-50,750,260,750,570,750,880,750};
   int LV2_platformCoordinates[] = {-10,750,640,750,-150,600,-180,450,-230,300,700,300};
-  int LV3_platformCoordinates[] = {630,750,-240,680,-200,200,160,750,-280,550,150,500,600,550,800,440};
+  int LV3_platformCoordinates[] = {600,750,905,750,-240,680,-200,200,160,750,-280,550,150,500,600,550,800,440};
   int LV4_platformCoordinates[] = {-50,750,260,750,570,750,880,750};
 
   //Platform details
@@ -370,7 +356,6 @@ private void CreateLevel(int level) {
 
   // CREATE PLATFORMS
   for(int i = 0; i < level_to_draw.size(); i +=2){
-      // Create a new GameObject with the visual size for rendering.
       GameObject platform = new GameObject(
           "res/platform1.png",
           scaledVisualWidth,
@@ -380,8 +365,7 @@ private void CreateLevel(int level) {
       PlatformList.add(platform);
   }
 
-  // CREATE GAME OBJECTS
-
+  // CREATE GAME OBJECTS BASED ON CURRENT LEVEL
   if(level == 1){
     JumpPotion = new GameObject("res/jumppotion.png", 50, 50, new Point3f(30, 520, 0)); // Jump Potion
     goldenStarStartPosition = 160;
@@ -395,7 +379,6 @@ private void CreateLevel(int level) {
   else if(level == 2){
     GameObject moving_platform = new GameObject("res/platform2.png", scaledVisualWidth, scaledVisualHeight, new Point3f(300, 600, 0));
     PlatformList.add(moving_platform);
-    // MovingPlatformList.add(moving_platform);
     MovingPlatform = moving_platform;
     moving_platform_velocity = 1;
     JumpPotion = new GameObject("res/jumppotion.png", 50, 50, new Point3f(30, 270, 0));
@@ -409,7 +392,6 @@ private void CreateLevel(int level) {
   else if(level == 3){
     GameObject moving_platform = new GameObject("res/platform2.png", scaledVisualWidth, scaledVisualHeight, new Point3f(300, 300, 0));
     PlatformList.add(moving_platform);
-    // MovingPlatformList.add(moving_platform);
     MovingPlatform = moving_platform;
     moving_platform_velocity = 1;
     left_bounds = 150;
@@ -485,7 +467,7 @@ private void movingPlatformLogic(){
 
 private void fireballLogic() {
   for (GameObject fireball : FireballList) {
-    // Check if colliding with player
+    // Check if colliding with players
     if (fireball.getCentre().getX() < Player.getCentre().getX() + Player.getWidth() - 40 &&
     fireball.getCentre().getX() + fireball.getWidth() > Player.getCentre().getX() + 40 &&
     fireball.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
@@ -507,11 +489,9 @@ private void fireballLogic() {
       }
     }
 
-    // Move fireballs
     fireball.getCentre().ApplyVector(new Vector3f(0, -1, 0));
 
-    //see if they get to the top of the screen ( remember 0 is the top
-    if (fireball.getCentre().getY() == 900.0f) { // current boundary need to pass value to model
+    if (fireball.getCentre().getY() == 900.0f) {
       FireballList.remove(fireball);
     }
   }
@@ -544,7 +524,7 @@ private void jumpPotionLogic(){
     jumpPotion.getCentre().getY() < Player.getCentre().getY() + Player.getHeight() - 40 && 
     jumpPotion.getCentre().getY() + jumpPotion.getHeight() > Player.getCentre().getY() + 80) {
         jumpPotionActivated = true;
-        JumpPotionList.remove(jumpPotion); //test
+        JumpPotionList.remove(jumpPotion); 
         audioPlayer.playSound("res/PotionSound2.wav", false);
     }
     if(two_player){
@@ -553,7 +533,7 @@ private void jumpPotionLogic(){
       jumpPotion.getCentre().getY() < Player2.getCentre().getY() + Player2.getHeight() - 40 && 
       jumpPotion.getCentre().getY() + jumpPotion.getHeight() > Player2.getCentre().getY() + 80) {
           jumpPotionActivated = true;
-          JumpPotionList.remove(jumpPotion); //test
+          JumpPotionList.remove(jumpPotion); 
           audioPlayer.playSound("res/PotionSound2.wav", false);
       }
     }

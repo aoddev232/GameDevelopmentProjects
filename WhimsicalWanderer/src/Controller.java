@@ -39,12 +39,9 @@ public class Controller implements KeyListener {
 			case 'l':setKeyLPressed(true);break;
 			case 'i':setKeyIPressed(true);break;
 		    default:
-		    	//System.out.println("Controller test:  Unknown key pressed");
+		    	System.out.println("Controller test:  Unknown key pressed");
 		        break;
 		}  
-		
-	 // You can implement to keep moving while pressing the key here . 
-		
 	}
 
 	@Override
@@ -59,14 +56,14 @@ public class Controller implements KeyListener {
 			case 'l':setKeyLPressed(false);break;
 			case 'i':setKeyIPressed(false);break;
 		    default:
-		    	//System.out.println("Controller test:  Unknown key pressed");
+		    	System.out.println("Controller test:  Unknown key pressed");
 		        break;
 		}  
-		 //upper case 
-	
 	}
 
 
+
+	// GETTER & SETTER METHODS 
 	public boolean isKeyAPressed() {
 		return KeyAPressed;
 	}
@@ -96,7 +93,7 @@ public class Controller implements KeyListener {
 	} 
 	
 
-	//2 Player Mode
+	// *** 2 Player Mode ***
 	public boolean isKeyJPressed() {
 		return KeyJPressed;
 	}
