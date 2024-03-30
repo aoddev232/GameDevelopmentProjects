@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "2000"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <PreActions>
+	        <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Touch UBT generated tiles"
+               scriptText = "# if a UBTGenerated plist doesn&apos;t exist, create it now for Xcode&apos;s dependency needs&#10;if [ ! -f &quot;${PROJECT_DIR}/${INFOPLIST_FILE}&quot; ]&#10;then&#10;  echo Creating ${PROJECT_DIR}/${INFOPLIST_FILE}...&#10;  touch &quot;${PROJECT_DIR}/${INFOPLIST_FILE}&quot;&#10;fi&#10;&#10;# if we had previously archived the build, then Xcode would have made a soft-link, but it will fail when building normally, so delete a soft-link&#10;if [ -L &quot;${CONFIGURATION_BUILD_DIR}/${PRODUCT_NAME}.app&quot; ]&#10;then&#10;  rm &quot;${CONFIGURATION_BUILD_DIR}/${PRODUCT_NAME}.app&quot;&#10;fi&#10;&#10;# make sure we have a cookeddata directory if needed&#10;if [[ &quot;${PLATFORM_NAME}&quot; == &quot;iphoneos&quot; || &quot;${PLATFORM_NAME}&quot; == &quot;appletvos&quot; ]]&#10;then&#10;  mkdir -p &quot;${CONFIGURATION_BUILD_DIR}/../../../Saved/StagedBuilds/${UE_TARGET_PLATFORM_NAME}/cookeddata&quot;&#10;fi&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+                     BuildableName = "ToonTanks.app"
+                     BlueprintName = "ToonTanks"
+                     ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+               BuildableName = "ToonTanks.app"
+               BlueprintName = "ToonTanks"
+               ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Development"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+            BuildableName = "ToonTanks.app"
+            BlueprintName = "ToonTanks"
+            ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Development"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "NO"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+            BuildableName = "ToonTanks.app"
+            BlueprintName = "ToonTanks"
+            ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Development"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "NO">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+            BuildableName = "ToonTanks.app"
+            BlueprintName = "ToonTanks"
+            ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Development">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Shipping"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

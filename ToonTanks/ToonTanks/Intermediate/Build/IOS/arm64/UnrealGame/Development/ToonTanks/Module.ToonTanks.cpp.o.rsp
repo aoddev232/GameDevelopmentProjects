@@ -1,0 +1,63 @@
+-c
+-pipe
+-I"."
+-I"Runtime/Core/Public"
+-I"Runtime/Core/Internal"
+-I"Runtime/TraceLog/Public"
+-Wall
+-Werror
+-Wdelete-non-virtual-dtor
+-Wenum-conversion
+-Wbitfield-enum-conversion
+-Wno-enum-enum-conversion
+-Wno-enum-float-conversion
+-Wno-unused-but-set-variable
+-Wno-unused-but-set-parameter
+-Wno-ordered-compare-function-pointers
+-Wno-bitwise-instead-of-logical
+-Wno-gnu-string-literal-operator-template
+-Wno-inconsistent-missing-override
+-Wno-invalid-offsetof
+-Wno-switch
+-Wno-tautological-compare
+-Wno-unknown-pragmas
+-Wno-unused-function
+-Wno-unused-lambda-capture
+-Wno-unused-local-typedef
+-Wno-unused-private-field
+-Wno-unused-variable
+-Wno-undefined-var-template
+-Wshadow
+-Wundef
+-Wno-float-conversion
+-Wno-implicit-float-conversion
+-Wno-implicit-int-conversion
+-Wno-c++11-narrowing
+-fdiagnostics-absolute-paths
+-fdiagnostics-color
+-Wno-unknown-warning-option
+-Wno-range-loop-analysis
+-Wno-single-bit-bitfield-constant-conversion
+-Wno-nonportable-include-path
+-O3
+-fno-delete-null-pointer-checks
+-fno-exceptions
+-DPLATFORM_EXCEPTIONS_DISABLED=1
+-gdwarf-4
+-fvisibility=hidden
+-fno-rtti
+-fmessage-length=0
+-fpascal-strings
+-arch arm64
+-isysroot "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk"
+-miphoneos-version-min=15.0
+-include-pch "/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Build/IOS/arm64/ToonTanks/Development/Core/SharedPCH.Core.Cpp17.h.gch"
+-include "/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Build/IOS/arm64/UnrealGame/Development/ToonTanks/Definitions.ToonTanks.h"
+-x objective-c++
+-std=c++17
+-fpch-validate-input-files-content
+-stdlib=libc++
+"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Build/IOS/arm64/UnrealGame/Development/ToonTanks/Module.ToonTanks.cpp"
+-MD -MF"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Build/IOS/arm64/UnrealGame/Development/ToonTanks/Module.ToonTanks.cpp.d"
+-o "/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Build/IOS/arm64/UnrealGame/Development/ToonTanks/Module.ToonTanks.cpp.o"
+-fno-objc-exceptions

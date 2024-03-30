@@ -1,0 +1,10 @@
+{
+	"SourceFiles": [
+		"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Source/ToonTanks.Build.cs",
+		"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Source/ToonTanks.Target.cs",
+		"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Source/ToonTanksClient.Target.cs",
+		"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Source/ToonTanksEditor.Target.cs",
+		"/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/Source/ToonTanksServer.Target.cs"
+	],
+	"EngineVersion": "5.3.1"
+}

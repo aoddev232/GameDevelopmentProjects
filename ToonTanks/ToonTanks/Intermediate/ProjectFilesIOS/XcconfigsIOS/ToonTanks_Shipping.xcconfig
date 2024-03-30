@@ -1,0 +1,8 @@
+// pull in the shared settings for all configs for this target
+#include "ToonTanks.xcconfig"
+
+// Unreal per-config variables
+UE_TARGET_CONFIG = Shipping
+UE_UBT_BINARY_SUBPATH = ToonTanks-IOS-Shipping
+UE_IOS_EXECUTABLE_NAME = ToonTanks-IOS-Shipping
+PRODUCT_NAME = ToonTanks-IOS-Shipping
