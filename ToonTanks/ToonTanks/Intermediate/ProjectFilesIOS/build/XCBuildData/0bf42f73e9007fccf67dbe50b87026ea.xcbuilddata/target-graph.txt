@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-ToonTanks in ToonTanks (IOS), no dependencies

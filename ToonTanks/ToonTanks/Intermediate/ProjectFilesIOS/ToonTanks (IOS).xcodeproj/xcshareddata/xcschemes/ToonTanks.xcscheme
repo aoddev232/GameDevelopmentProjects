@@ -14,7 +14,7 @@
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+                     BlueprintIdentifier = "D51EB49330F3E4A3D81F4B72"
                      BuildableName = "ToonTanks.app"
                      BlueprintName = "ToonTanks"
                      ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
@@ -32,7 +32,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+               BlueprintIdentifier = "D51EB49330F3E4A3D81F4B72"
                BuildableName = "ToonTanks.app"
                BlueprintName = "ToonTanks"
                ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
@@ -48,7 +48,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+            BlueprintIdentifier = "D51EB49330F3E4A3D81F4B72"
             BuildableName = "ToonTanks.app"
             BlueprintName = "ToonTanks"
             ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+            BlueprintIdentifier = "D51EB49330F3E4A3D81F4B72"
             BuildableName = "ToonTanks.app"
             BlueprintName = "ToonTanks"
             ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
@@ -88,7 +88,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "32C611B69D4DAD6C6967267D"
+            BlueprintIdentifier = "D51EB49330F3E4A3D81F4B72"
             BuildableName = "ToonTanks.app"
             BlueprintName = "ToonTanks"
             ReferencedContainer = "container:ToonTanks (IOS).xcodeproj">
