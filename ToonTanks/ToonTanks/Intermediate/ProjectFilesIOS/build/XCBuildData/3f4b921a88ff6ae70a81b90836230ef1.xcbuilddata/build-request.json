@@ -1,0 +1,68 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildOnly"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "e5eda7e497021371506a6f5d335ce8604dc5dfffaf7bcc41e3e7442da6d2b083"
+    }
+  ],
+  "containerPath" : "/Users/alexodonnell/Documents/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Intermediate/ProjectFiles/ToonTanks_IOS_ToonTanks.xcworkspace",
+  "continueBuildingAfterErrors" : false,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : true,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "undefined_arch",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : true,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos16.4",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "armv4t",
+        "armv5",
+        "armv6",
+        "armv7",
+        "armv7f",
+        "armv7s",
+        "armv7k",
+        "arm64",
+        "arm64e"
+      ],
+      "targetArchitecture" : "undefined_arch"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/alexodonnell/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/alexodonnell/Library/Developer/Xcode/DerivedData/ToonTanks_IOS_ToonTanks-ejzbizebduyaouehhxbipkqhrfdf/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/alexodonnell/Library/Developer/Xcode/DerivedData/ToonTanks_IOS_ToonTanks-ejzbizebduyaouehhxbipkqhrfdf/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Development",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+          "CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION" : "YES",
+          "UE_XCODE_BUILD_MODE" : "PostBuildSync"
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ACTION" : "build",
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
