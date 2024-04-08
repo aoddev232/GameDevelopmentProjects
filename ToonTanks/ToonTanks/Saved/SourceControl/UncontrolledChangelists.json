@@ -9,7 +9,11 @@
 				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Player/Player.uasset",
 				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/EnemyTank.uasset",
 				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/EnemyPlane.uasset",
-				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/GasCan.uasset"
+				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/GasCan.uasset",
+				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/WorldLevel.uasset",
+				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/EnemyProjectile.uasset",
+				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Level/LevelManager.uasset",
+				"C:/Users/alexo/OneDrive/Documents/AOD/GitHub/GameDevelopmentProjects/ToonTanks/ToonTanks/Content/GameObjects/Pickups/TankUpgrade.uasset"
 			]
 		}
 	]
